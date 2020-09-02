@@ -11,6 +11,7 @@
 	],
 	"repository": {
 		"expression": {
+			"name": "expression.group",
 			"patterns": [
 				{
 					"include": "#operator"
@@ -19,34 +20,61 @@
 					"include": "#identifier"
 				},
 				{
-					"include": "#booleanliteral"
+					"include": "#boolean-literal"
 				},
 				{
-					"include": "#numberliteral"
+					"include": "#number-literal"
 				},
 				{
-					"include": "#stringliteral"
+					"include": "#string-literal"
 				}
 			]
 		},
+		"expression-list": {
+			"name": "expression.group",
+			"begin": "\\(",
+			"end": "\\)",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.paren.open"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.paren.close"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#expression"
+				},
+				{
+					"include": "#separator"
+				}
+			]
+		},
+		"separator": {
+			"name": "other",
+			"match": ","
+		},
 		"operator": {
 			"name": "keyword.operator",
-			"match": "\b(:|->|~|+|-|*|/|%|&|\\||^|<|>|=|.|:=|::|=>)\b"
+			"match": "->|:=|::|=>|:|~|\\+|-|\\*|\\/|%|<|>|=|\\."
 		},
 		"identifier": {
 			"name": "variable",
-			"match": "\b([A-Za-z@!?][A-Za-z0-9@!?]*|_)\b"
+			"match": "[A-Za-z@!?][A-Za-z0-9@!?]*|_"
 		},
-		"booleanliteral": {
+		"boolean-literal": {
 			"name": "constant.language",
 			"match": "true|false"
 		},
-		"numberliteral": {
+		"number-literal": {
 			"name": "constant.numeric",
-			"match": "\b\\d+(\\.\\d*)\b"
+			"match": "\\d+(\\.\\d*)?"
 		},
-		"stringliteral": {
-			"name": "string.quoted",
+		"string-literal": {
+			"name": "string.quoted.single",
 			"begin": "'",
 			"end": "'"
 		},
