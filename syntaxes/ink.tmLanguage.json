@@ -14,6 +14,21 @@
 			"name": "expression.group",
 			"patterns": [
 				{
+					"include": "expression-list"
+				},
+				{
+					"include": "list-literal"
+				},
+				{
+					"include": "object-literal"
+				},
+				{
+					"include": "function-call"
+				},
+				{
+					"include": "property-access"
+				},
+				{
 					"include": "#operator"
 				},
 				{
@@ -53,13 +68,77 @@
 				}
 			]
 		},
+		"list-literal": {
+			"name": "entity.list.ink",
+			"begin": "\\[",
+			"end": "\\]",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.bracket.open"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.bracket.close"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#expression"
+				},
+				{
+					"include": "#separator"
+				}
+			]
+		},
+		"object-literal": {
+			"name": "entity.object.ink",
+			"begin": "\\{",
+			"end": "\\}",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.brace.open"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.brace.close"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#expression"
+				},
+				{
+					"include": "#separator"
+				}
+			]
+		},
 		"separator": {
-			"name": "other",
+			"name": "entity.separator.ink",
 			"match": ","
 		},
 		"operator": {
 			"name": "keyword.operator",
 			"match": "->|:=|::|=>|:|~|\\+|-|\\*|\\/|%|<|>|=|\\."
+		},
+		"function-call": {
+			"name": "entity.functioncall.ink",
+			"match": "([A-Za-z@!?][A-Za-z0-9@!?]*)\\s*\\(",
+			"captures": {
+				"0": {
+					"name": "variable.function.ink"
+				}
+			}
+		},
+		"property-access": {
+			"name": "entity.propertyaccess.ink",
+			"match": "\\.\\s*([A-Za-z@!?][A-Za-z0-9@!?]*)",
+			"captures": {
+				"0": {
+					"name": "variable.property"
+				}
+			}
 		},
 		"identifier": {
 			"name": "variable",
