@@ -1,9 +1,8 @@
-# Change Log
+# Changelog
 
 All notable changes to the "ink-vscode" extension will be documented in this file.
-
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
 ## [Unreleased]
 
 - Initial release
+- Support for basic syntax highlights
