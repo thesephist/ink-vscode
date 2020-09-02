@@ -7,56 +7,62 @@
 		},
 		{
 			"include": "#comment"
+		},
+		{
+			"include": "#sepearator"
 		}
 	],
 	"repository": {
 		"expression": {
-			"name": "expression.group",
+			"name": "expression.ink",
 			"patterns": [
 				{
-					"include": "expression-list"
+					"include": "#function-call"
 				},
 				{
-					"include": "list-literal"
+					"include": "#property-access"
 				},
 				{
-					"include": "object-literal"
+					"include": "#expression-list"
 				},
 				{
-					"include": "function-call"
+					"include": "#list-literal"
 				},
 				{
-					"include": "property-access"
+					"include": "#object-literal"
 				},
 				{
 					"include": "#operator"
 				},
 				{
-					"include": "#identifier"
+					"include": "#boolean-literal"
 				},
 				{
-					"include": "#boolean-literal"
+					"include": "#identifier"
 				},
 				{
 					"include": "#number-literal"
 				},
 				{
 					"include": "#string-literal"
+				},
+				{
+					"include": "#comment"
 				}
 			]
 		},
 		"expression-list": {
-			"name": "expression.group",
+			"name": "expression.group.ink",
 			"begin": "\\(",
 			"end": "\\)",
 			"beginCaptures": {
 				"0": {
-					"name": "punctuation.paren.open"
+					"name": "punctuation.paren.open.ink"
 				}
 			},
 			"endCaptures": {
 				"0": {
-					"name": "punctuation.paren.close"
+					"name": "punctuation.paren.close.ink"
 				}
 			},
 			"patterns": [
@@ -74,12 +80,12 @@
 			"end": "\\]",
 			"beginCaptures": {
 				"0": {
-					"name": "punctuation.bracket.open"
+					"name": "punctuation.bracket.open.ink"
 				}
 			},
 			"endCaptures": {
 				"0": {
-					"name": "punctuation.bracket.close"
+					"name": "punctuation.bracket.close.ink"
 				}
 			},
 			"patterns": [
@@ -97,12 +103,12 @@
 			"end": "\\}",
 			"beginCaptures": {
 				"0": {
-					"name": "punctuation.brace.open"
+					"name": "punctuation.brace.open.ink"
 				}
 			},
 			"endCaptures": {
 				"0": {
-					"name": "punctuation.brace.close"
+					"name": "punctuation.brace.close.ink"
 				}
 			},
 			"patterns": [
@@ -119,46 +125,64 @@
 			"match": ","
 		},
 		"operator": {
-			"name": "keyword.operator",
+			"name": "keyword.operator.ink",
 			"match": "->|:=|::|=>|:|~|\\+|-|\\*|\\/|%|<|>|=|\\."
 		},
 		"function-call": {
 			"name": "entity.functioncall.ink",
 			"match": "([A-Za-z@!?][A-Za-z0-9@!?]*)\\s*\\(",
 			"captures": {
-				"0": {
-					"name": "variable.function.ink"
+				"1": {
+					"name": "support.function.ink"
 				}
 			}
 		},
 		"property-access": {
 			"name": "entity.propertyaccess.ink",
-			"match": "\\.\\s*([A-Za-z@!?][A-Za-z0-9@!?]*)",
+			"match": "(\\.)\\s*([A-Za-z@!?][A-Za-z0-9@!?]*)",
 			"captures": {
-				"0": {
-					"name": "variable.property"
+				"1": {
+					"name": "keyword.operator.ink"
+				},
+				"2": {
+					"name": "entity.other.attribute-name.ink"
 				}
 			}
 		},
 		"identifier": {
-			"name": "variable",
+			"name": "variable.ink",
 			"match": "[A-Za-z@!?][A-Za-z0-9@!?]*|_"
 		},
 		"boolean-literal": {
-			"name": "constant.language",
+			"name": "constant.language.ink",
 			"match": "true|false"
 		},
 		"number-literal": {
-			"name": "constant.numeric",
+			"name": "constant.numeric.ink",
 			"match": "\\d+(\\.\\d*)?"
 		},
 		"string-literal": {
-			"name": "string.quoted.single",
+			"name": "string.quoted.single.ink",
 			"begin": "'",
 			"end": "'"
 		},
 		"comment": {
-			"name": "comment",
+			"name": "comment.ink",
+			"patterns": [
+				{
+					"include": "#line-comment"
+				},
+				{
+					"include": "#block-comment"
+				}
+			]
+		},
+		"line-comment": {
+			"name": "comment.line.ink",
+			"match": "``.*"
+		},
+		"block-comment": {
+			"name": "comment.block.ink",
 			"begin": "`",
 			"end": "`"
 		}

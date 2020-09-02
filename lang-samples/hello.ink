@@ -25,6 +25,8 @@ var + x :: {
     4 -> 5
 }
 
-` test`
+` test ` 3 + 2
+`` line comment
+	` in a tab `
 
  comment
