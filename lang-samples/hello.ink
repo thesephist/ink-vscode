@@ -25,6 +25,9 @@ var + x :: {
     4 -> 5
 }
 
+str := 'non-escape d'
+nstr := 'escaped_\x + \'string'
+
 ` test ` 3 + 2
 `` line comment
 	` in a tab `

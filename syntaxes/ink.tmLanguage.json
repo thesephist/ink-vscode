@@ -155,7 +155,7 @@
 		},
 		"boolean-literal": {
 			"name": "constant.language.ink",
-			"match": "true|false"
+			"match": "\\b(true|false)\\b"
 		},
 		"number-literal": {
 			"name": "constant.numeric.ink",
@@ -164,7 +164,16 @@
 		"string-literal": {
 			"name": "string.quoted.single.ink",
 			"begin": "'",
-			"end": "'"
+			"end": "'",
+			"patterns": [
+				{
+					"include": "#string-escape"
+				}
+			]
+		},
+		"string-escape": {
+			"name": "constant.character.escape.ink",
+			"match": "\\\\."
 		},
 		"comment": {
 			"name": "comment.ink",
