@@ -1,6 +1,6 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "Ink",
+	"scopeName": "source.ink",
 	"patterns": [
 		{
 			"include": "#expression"
@@ -30,23 +30,23 @@
 			]
 		},
 		"operator": {
-			"name": "operator",
+			"name": "keyword.operator",
 			"match": "\b(:|->|~|+|-|*|/|%|&|\\||^|<|>|=|.|:=|::|=>)\b"
 		},
 		"identifier": {
-			"name": "identifier",
+			"name": "variable",
 			"match": "\b([A-Za-z@!?][A-Za-z0-9@!?]*|_)\b"
 		},
 		"booleanliteral": {
-			"name": "booleanliteral",
+			"name": "constant.language",
 			"match": "true|false"
 		},
 		"numberliteral": {
-			"name": "numberliteral",
+			"name": "constant.numeric",
 			"match": "\b\\d+(\\.\\d*)\b"
 		},
 		"stringliteral": {
-			"name": "stringliteral",
+			"name": "string.quoted",
 			"begin": "'",
 			"end": "'"
 		},
@@ -55,6 +55,5 @@
 			"begin": "`",
 			"end": "`"
 		}
-	},
-	"scopeName": "source.ink"
+	}
 }
