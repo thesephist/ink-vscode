@@ -1,0 +1,25 @@
+{
+    "name": "ink-vscode",
+    "displayName": "Ink programming language",
+    "description": "Language support for the Ink programming language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.48.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "ink",
+            "aliases": ["Ink", "ink"],
+            "extensions": [".ink"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "ink",
+            "scopeName": "source.ink",
+            "path": "./syntaxes/ink.tmLanguage.json"
+        }]
+    }
+}

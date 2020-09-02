@@ -1,0 +1,60 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Ink",
+	"patterns": [
+		{
+			"include": "#expression"
+		},
+		{
+			"include": "#comment"
+		}
+	],
+	"repository": {
+		"expression": {
+			"patterns": [
+				{
+					"include": "#operator"
+				},
+				{
+					"include": "#identifier"
+				},
+				{
+					"include": "#booleanliteral"
+				},
+				{
+					"include": "#numberliteral"
+				},
+				{
+					"include": "#stringliteral"
+				}
+			]
+		},
+		"operator": {
+			"name": "operator",
+			"match": "\b(:|->|~|+|-|*|/|%|&|\\||^|<|>|=|.|:=|::|=>)\b"
+		},
+		"identifier": {
+			"name": "identifier",
+			"match": "\b([A-Za-z@!?][A-Za-z0-9@!?]*|_)\b"
+		},
+		"booleanliteral": {
+			"name": "booleanliteral",
+			"match": "true|false"
+		},
+		"numberliteral": {
+			"name": "numberliteral",
+			"match": "\b\\d+(\\.\\d*)\b"
+		},
+		"stringliteral": {
+			"name": "stringliteral",
+			"begin": "'",
+			"end": "'"
+		},
+		"comment": {
+			"name": "comment",
+			"begin": "`",
+			"end": "`"
+		}
+	},
+	"scopeName": "source.ink"
+}
